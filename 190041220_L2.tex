@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\title{\textbf{Differential Operator}}
+\author{Tasfia Tasneem Annesha 190041220}
+\date{January 2023}
+
+\begin{document}
+
+\maketitle
+The operator representing the computation of a derivative,
+
+\\
+\begin{align}
+\tilde{D} \equiv \frac{d}{dx} ,
+\end{align}
+
+sometimes also called the Newton-Leibniz operator. The second derivative is then denoted $\tilde{D}^2$ , the third $\tilde{D} ^3$, etc. The integral is denoted $\tilde{D}^{-1}$.
+\\
+\\
+The differential operator satisfies the identity
+\begin{align}
+     \left(2x- \frac{d}{dx} \right)^n 1= H_n\left(x\right),
+\end{align}
+where \textit{$H_n(x)$} is a Hermite polynomial (Arfken 1985, p. 718), where the first few cases are given explicitly by
+\begin{align}
+    H_1(x)&=2x- \frac{\delta 1}{\delta x}\\
+          & =2x\\
+    H_2(x)&=2x(2x)- \frac{\delta (2x)}{\delta x}\\
+          & =4x^2 -2\\
+    H_3(x)&=2x(4 x^2 - 2)- \frac{\delta (4x^2 -2)}{\delta x}\\
+          & =8x^3 - 12x.      
+\end{align}
+The symbol $\vartheta$ can be used to denote the operator
+\\
+\begin{align}
+    \vartheta \equiv x \frac{d}{dx}
+\end{align}
+(Bailey 1935, p. 8). A fundamental identity for this operator is given by\\
+\begin{align}
+    \left(x\Tilde{D}\right)^n = \sum_{k=0}^{n}S(n,k)\hspace{0.05cm}x^k \Tilde{D}^k ,
+\end{align}
+\\
+where \textit{S(n,k)} is a Stirling number of the second kind (Roman 1984, p. 144), giving
+\begin{align}
+    \left(x\Tilde{D}\right)^1 &= x\Tilde{D} \\
+    \left(x\Tilde{D}\right)^2 &= x\Tilde{D} + x^2\Tilde{D} ^2\\ 
+    \left(x\Tilde{D}\right)^3 &= x\Tilde{D} + 3x^2\Tilde{D} ^2 + x^3\Tilde{D} ^3\\ 
+    \left(x\Tilde{D}\right)^4 &= x\Tilde{D} + 7x^2\Tilde{D} ^2 + 6x^3\Tilde{D} ^3 + x^4\Tilde{D}^4
+\end{align}
+and so on (OEIS A008277). Special cases include
+\begin{align}
+    \vartheta^n e^x &=e^x \sum_{k=0}^{n}S(n,k)x^k\\
+    \vartheta^n \cos x &=\cos x \sum_{k=0}^{n}(-1)^k \hspace{0.1cm}S(n, 2k) x^{2k} + \sin x \sum_{k=1}^{n}(-1)^k \hspace{0.1cm} S(n,2k-1) x^{2k-1}\\
+    \vartheta^n \sin x &=\cos x \sum_{k=1}^{n}(-1)^{k+1} \hspace{0.1cm}S(n, 2k - 1) x^{2k- 1} + \sin x \sum_{k=0}^{n}(-1)^k \hspace{0.1cm} S(n,2k) x^{2k}.
+\end{align}
+A shifted version of the identity is given by
+\begin{align}
+    [ \,(x-a) \Tilde{D} ] \,^n = \sum_{k=0}^{n} S(n,k)(x-a)^k \hspace{0.1cm}\Tilde{D}^k
+\end{align}
+(Roman 1984, p. 146).
+ \end{document}
+
