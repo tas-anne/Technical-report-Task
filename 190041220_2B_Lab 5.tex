@@ -1,0 +1,88 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{url}
+\title{190041220-2B-L5}
+\author{Tasfia Tasneem Annesha, 190041220}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Tomato, Solanum lycopersicum, is one of the most common vegetables grown worldwide. According to recent statistics, around 180.64 million metric tons of tomatoes are grown worldwide which amounts to an export value of 8.81 billion US Dollars \cite{1}. However, the production of tomatoes is on the decline due to the crop being prone to various diseases \cite{2}.
+Early detection and classification of diseases implemented using tools and technologies available
+to the farmers can go a long way to alleviate all the issues discussed \cite{3}.
+Several solutions have been proposed using the traditional machine learning approaches for plant disease classification \cite{4}. Moreover, the emergence of deep learning-based methods in the agricultural domain has opened a new door
+for researchers with outstanding generalization capability removing the dependencies on handcrafted features\cite{5}.
+Recently, Convolutional Neural Network (CNN) has become a powerful tool for any classification task as it automatically extracts important features from images without human
+supervision. Moreover, the recent variations of CNN architectures such as AlexNet \cite{6}, DenseNets \cite{7}, EfficientNets \cite{8}, GoogLeNet \cite{9}, MobileNets \cite{10}, \cite{11}, NASNets \cite{12}.
+
+Residual Networks (ResNets) \cite{13}, SqueezeNet \cite{14}, Visual
+Geometric Group (VGG) Networks \cite{15} have enabled the machines to understand complex patterns enabling even better performance than humans in many classification
+problems. With the introduction of transfer learning where the reuse of a model efficient in solving one problem as the starting point of another problem in a relevant domain has significantly reduced the requirement of vast computational resources \cite{16}. Consequently, the utilization of pretrained AlexNet and GoogLeNet architectures on the publicly available PlantVillage Dataset \cite{17} has been one of the pioneer works of leaf disease classification using transfer learning and paved the way for numerous solutions in the existing literature \cite{18}. These deep neural architectures have been found to be extremely helpful for leaf disease classification tasks for several plants such as, apple \cite{19}, cassava \cite{20},
+corn \cite{21}, cucumber \cite{22}, grape \cite{23}, maize \cite{24}, mango \cite{25},
+rice \cite{26}, etc. However, most of these solutions propose deep and complex networks focusing on increasing the accuracy of
+detection.
+
+
+\section{Related works}
+To extract features, researchers
+focused on utilizing different image-level feature extraction techniques like Gray-Level Co-occurrence Matrices (GLCM) \cite{27}, Geometric and histogram-based features \cite{28}, Gabor Wavelet Transformation \cite{29}, Moth-Flame Optimization and Rough Set (MFORS) \cite{30}, and similar techniques. To segment the diseased portion of the leaves, several works have extracted the Region of Interest (RoI) using k-means clustering \cite{28}, Otsu’s method \cite{31}, etc. To predict the class labels from the extracted features, Support Vector Machine (SVM) \cite{27}, \cite{29}, Decision Trees \cite{31}, and other classifiers
+were used.
+
+This issue was alleviated to a
+great extent when the PlantVillage dataset was introduced containing 54,309 images of 14 different crop species and 26 diseases \cite{17}. 
+
+A subset of this dataset contains nine tomato
+leaf diseases and one healthy class that has been utilized by most of the recent deep learning-based works on tomato leaf disease classification. Several works on tomato leaf diseases also focused on segmenting leaves from complex backgrounds \cite{32}, real-time localization of diseases \cite{33},\cite{34},\cite{35},
+detection of leaf disease in early-stage \cite{36}, visualizing the
+learned features of different layers of CNN model \cite{37} , \cite{38},
+combining leaf segmentation and classification \cite{39}, and so on.
+
+s. Based on their results, they recommended the use
+of GoogleNet \cite{37}, \cite{40}, \cite{41}, AlexNet \cite{42}, ResNet \cite{43},
+DenseNet121 \cite{44} in creating tomato leaf disease detection systems due to their superior performance compared to other
+models. Some of these works have also investigated the effect of different hyperparameter choices like optimizers, batch sizes, the number of epochs, and fine-tuning the model from different depths to see how they impact its performance \cite{40},
+\cite{42}. These models were pretrained on massive datasets,making them the perfect choice for extracting relevant features outperforming shallow machine learning-based models.
+Although these systems achieved high accuracy going up to 99.39\% \cite{40}, the models were huge and computationally expensive, often making them infeasible for low-end devices.
+Several attempts were made to reduce the computational cost and model size. Durmucş et al. \cite{45} utilized SqueezeNet
+to detect tomato leaf diseases. The base SqueezeNet architecture reduces the computational cost by minimizing the number of 3×3 filters, late downsampling, and deep compression.
+The authors conducted the experiments on an NVIDIA Jetson TX1 device targeting real-time disease detection using robots.
+Tm et al. \cite{46} proposed a variation LeNet, one of the earliest and smallest deep-learning architectures. The authors introduced an additional convolutional and pooling layer to the
+base architecture and increased the number of filters in different layers to extract complex features. However, the accuracies achieved by these two systems were not on par with
+the performance of the deeper models. Bir et al. \cite{47} utilized pretrained EfficientNet-B0 to achieve a comparable accuracy
+with the state-of-the-art while keeping the model size and computation low.
+
+ Few problems arise because of this class
+imbalance. First, the model does not get a good look at the images of classes with a lower number of samples, leading
+to less generalization \cite{48}. Moreover, the overall accuracy
+might still be high even if the model is ignoring these small sized classes, as they do not contribute much to the overall
+accuracy \cite{49}. 
+
+Moreover, in real-world applications,
+images captured by the end-users might not always be adequately illuminated, and this might fail to provide the model
+with enough details to identify the disease, and hence affect
+the classification result \cite{50}.
+To tackle the illumination problem by addressing the uneven
+distribution of intensity, we opted for Contrast Limited Adaptive Histogram Equalization \cite{51}.
+Furthermore, as mentioned earlier, there exists a class imbalance in the original dataset. This issue has been tackled in various ways in the existing literature. The most common way of dealing with this has been to undersample and/or oversample certain classes \cite{41}, \cite{43}, \cite{44}, \cite{47}.
+
+This problem is
+known as data leakage \cite{52}.
+A Batch Normalization \cite{53} block was added between the output of the MobileNetV2
+the epochs needed to train the network. Rectified Linear Unit (ReLU) \cite{54}  was used as the activation function of the two
+densely connected blocks. This activation function makes the models easier to optimize and more generalizable. A dropout layer \cite{55} in-between these two dense blocks.
+
+a Softmax activation function \cite{56}.
+ Following the mini-batch gradient descent technique \cite{57}, the batch size was selected as 16. Since smaller batch sizes are often noisy, they help create a regularization effect and reduce the generalization error. They also help fit
+training data into memory. To ensure the rapid learning of salient features, we have
+used Adam optimizer \cite{58} for training our model.In our work, we initialized the feature extractor part of the network with the respective pretrained weights from ImageNet Dataset \cite{59} for the models and the classifier
+network with random weights.
+Mapping (GradCAM) output for the correctly classified samples \cite{60}.
+
+\bibliographystyle{IEEEtran} % acm, unsr
+\bibliography{ref}
+
+\end{document}
